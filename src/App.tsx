@@ -45,34 +45,34 @@ const TopNavBar = () => {
   const links = ['Home', 'Services', 'About', 'Portfolio'];
 
   return (
-    <nav className="sticky top-0 w-full z-50 bg-[#e8e4db] py-4 transition-all duration-500 ease-out">
+    <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-xl border-b border-white/10 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-500 ease-out">
       <div className="flex justify-between items-center w-full px-8 md:px-12 max-w-7xl mx-auto">
         <motion.div
            initial={{ opacity: 0, x: -20 }}
            animate={{ opacity: 1, x: 0 }}
-           className="text-base font-light tracking-[0.25em] uppercase text-[#1a1a1a] flex items-center gap-3"
+           className="text-base font-light tracking-[0.25em] uppercase text-white flex items-center gap-3"
         >
           <div className="flex -space-x-2">
-            <div className="w-6 h-6 border border-[#1a1a1a] rounded-full mix-blend-multiply"></div>
-            <div className="w-6 h-6 border border-[#1a1a1a] rounded-full mix-blend-multiply"></div>
+            <div className="w-6 h-6 border border-white/60 rounded-full mix-blend-overlay"></div>
+            <div className="w-6 h-6 border border-white/60 rounded-full mix-blend-overlay"></div>
           </div>
           <span className="mt-0.5">AURA</span>
         </motion.div>
 
-        <div className="hidden md:flex items-center bg-[#f4efe5]/80 border border-white/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05),0_2px_8px_rgba(0,0,0,0.05)] backdrop-blur-md p-1.5 rounded-full">
+        <div className="hidden md:flex items-center bg-white/10 border border-white/20 shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_2px_8px_rgba(0,0,0,0.1)] backdrop-blur-md p-1.5 rounded-full">
            {links.map((link) => (
              <a
                key={link}
                href={`#${link.toLowerCase()}`}
                onClick={() => setActive(link)}
                className={`relative px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                 active === link ? 'text-white' : 'text-[#333333] hover:text-[#ae851b]'
+                 active === link ? 'text-[#1a1a1a]' : 'text-white/80 hover:text-white'
                }`}
              >
                {active === link && (
                  <motion.div
                    layoutId="activePill"
-                   className="absolute inset-0 bg-[#b88c22] rounded-full shadow-sm"
+                   className="absolute inset-0 bg-white rounded-full shadow-sm"
                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
                  />
                )}
@@ -84,7 +84,7 @@ const TopNavBar = () => {
         <motion.button
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-[#b88c22] text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-[0_4px_12px_rgba(184,140,34,0.3)] hover:bg-[#a07a1c] transition-colors"
+          className="bg-white text-[#1a1a1a] px-6 py-2.5 rounded-full font-medium text-sm shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:bg-gray-100 transition-colors"
         >
           Get Started
         </motion.button>
@@ -95,42 +95,37 @@ const TopNavBar = () => {
 
 const Hero = () => (
   <header id="home" className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-32 px-8 overflow-hidden bg-[#e8e4db]">
-    <motion.video
-      autoPlay
-      loop
-      muted
-      playsInline
+    <motion.img
       initial={{ scale: 0.95, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 1.5, ease: 'easeOut' }}
+      alt="Futuristic modern house"
       className="absolute inset-0 w-full h-full object-cover z-0"
-    >
-      <source src="https://videos.pexels.com/video-files/3187274/3187274-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-creative-team-meeting-at-a-modern-office-41585-large.mp4" type="video/mp4" />
-    </motion.video>
-    <div className="absolute inset-0 bg-[#e8e4db]/50 backdrop-blur-[2px] z-[1]"></div>
+      src="/futuristic-house.jpg.png"
+    />
+    <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] z-[1]"></div>
     
     <div className="relative z-10 w-full max-w-7xl mx-auto text-center flex flex-col items-center">
       <FadeIn delay={0.2}>
-        <span className="inline-block py-1.5 px-4 rounded-full bg-white/80 text-[#1a1a1a] font-semibold text-xs md:text-sm tracking-widest uppercase mb-8 backdrop-blur-md shadow-sm border border-white/60">
+        <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 text-white font-semibold text-xs md:text-sm tracking-widest uppercase mb-8 backdrop-blur-md shadow-sm border border-white/20">
           Aetherial Living
         </span>
       </FadeIn>
       <FadeIn delay={0.4}>
-        <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl text-[#1a1a1a] max-w-4xl mx-auto mb-8 leading-tight tracking-tight drop-shadow-sm">
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl text-white max-w-4xl mx-auto mb-8 leading-tight tracking-tight drop-shadow-md">
           Crafting Spaces That Breathe With Light & Clarity
         </h1>
       </FadeIn>
       <FadeIn delay={0.6}>
-        <p className="font-sans text-lg md:text-xl text-[#333333] max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-sm">
+        <p className="font-sans text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-md">
           We design sanctuaries of serene luxury. Every detail curated to elevate the everyday into an effortless experience of calm.
         </p>
       </FadeIn>
       <FadeIn delay={0.8} className="flex flex-col sm:flex-row gap-6 items-center justify-center">
-        <button className="bg-[#1a1a1a] text-white px-8 py-4 rounded-full font-semibold text-sm tracking-widest uppercase hover:-translate-y-1 hover:bg-[#333333] transition-all shadow-[0_8px_24px_rgba(26,26,26,0.15)] flex items-center gap-2">
+        <button className="bg-white text-[#1a1a1a] px-8 py-4 rounded-full font-semibold text-sm tracking-widest uppercase hover:-translate-y-1 hover:bg-gray-100 transition-all shadow-[0_8px_24px_rgba(0,0,0,0.2)] flex items-center gap-2">
           View Portfolio <ArrowRight size={18} />
         </button>
-        <button className="bg-white/60 backdrop-blur-md text-[#1a1a1a] border border-[#1a1a1a]/20 px-8 py-4 rounded-full font-semibold text-sm tracking-widest uppercase hover:bg-[#1a1a1a] hover:text-white hover:border-[#1a1a1a] transition-all flex items-center gap-2">
+        <button className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-semibold text-sm tracking-widest uppercase hover:bg-white/20 hover:border-white/50 transition-all flex items-center gap-2">
           Discover Our Process
         </button>
       </FadeIn>
